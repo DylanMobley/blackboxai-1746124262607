@@ -1,0 +1,33 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs and runtime files
+*.log
+*.pid
+*.db
+*.sqlite3
+logs/
+mnt/tmp/
+mnt/output/
+
+# Git + dev
+.git/
+.gitignore
+.vscode/
+*.swp
+.env
+.env.template
+
+# Docker artifacts
+Dockerfile
+docker-compose.yml
+
+# Build artifacts
+*.egg-info
+dist/
+build/
+
+# Tests
+backend/tests/
