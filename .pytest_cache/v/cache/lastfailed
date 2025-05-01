@@ -1,0 +1,7 @@
+{
+  "MEC_v13/MEC_v13/backend/app/tests/api": true,
+  "MEC_v13/MEC_v13/backend/app/tests/core/test_modifier_engine.py": true,
+  "MEC_v13/MEC_v13/backend/app/tests/emotion_core/test_emotion_utils.py": true,
+  "MEC_v13/MEC_v13/backend/app/tests/emotion_core/test_fusion_engine.py": true,
+  "MEC_v13/MEC_v13/backend/app/tests/emotion_core/test_prompt_builder.py": true
+}
