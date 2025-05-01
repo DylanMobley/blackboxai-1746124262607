@@ -1,0 +1,19 @@
+# MEC_v13+ - AI Agent Robots Directive
+User-agent: *
+
+# ✅ Allow main UI
+Allow: /
+
+# ❌ Disallow API access
+Disallow: /api/
+Disallow: /express/
+Disallow: /clone-video/
+Disallow: /static/video/
+
+# ❌ Disallow system files (optional)
+Disallow: /debug/
+Disallow: /status/
+Disallow: /favicon.ico
+
+# Sitemap (optional)
+# Sitemap: https://www.empathyethicist.ai/sitemap.xml
