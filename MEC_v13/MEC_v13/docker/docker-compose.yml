@@ -21,6 +21,7 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+    restart: always
 
   # 🎭 Clone Video Service
   clone:
@@ -42,6 +43,7 @@ services:
       interval: 30s
       timeout: 5s
       retries: 3
+    restart: always
 
   # 🎙️ Emotion TTS Service
   tts:
@@ -80,6 +82,7 @@ services:
             - capabilities: [gpu]
     depends_on:
       - redis
+    restart: always
 
   # 🔴 Redis Broker
   redis:
@@ -89,6 +92,7 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    restart: always
 
   # 📈 Prometheus Metrics
   prometheus:
@@ -98,6 +102,7 @@ services:
       - "9090:9090"
     volumes:
       - ./grafana/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: always
 
   # 📊 Grafana Dashboards
   grafana:
@@ -114,6 +119,7 @@ services:
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
     depends_on:
       - prometheus
+    restart: always
 
 volumes:
   redis_data:
