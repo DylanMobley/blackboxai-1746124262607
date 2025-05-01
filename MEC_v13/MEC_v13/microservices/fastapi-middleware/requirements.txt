@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+torch  # or the appropriate version depending on the LoRA model and PyTorch version you're using
+lora  # LoRA package if using a custom LoRA model
+pydantic
+requests  # If you are using any external API calls
