@@ -1,0 +1,16 @@
+mec_v13:
+  created: "2025-04-24"
+  author: "Empathy Ethicist AI Team"
+  version: "13.0.0"
+  model_registry:
+    - emotion-v2
+    - transformer-fusion-core
+    - mistral-7b-hermes-empathy
+    - recovery_v1
+  dependencies:
+    - torch >= 2.1.0
+    - transformers >= 4.36.0
+    - sentence-transformers
+    - gguf/llama.cpp
+  notes: >
+    These models are modular and can be hot-swapped using fetch_models.py or CLI upgrade scripts.
