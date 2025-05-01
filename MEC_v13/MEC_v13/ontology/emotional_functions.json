@@ -1,0 +1,128 @@
+{
+  "shame": {
+    "function": "repair",
+    "subtypes": ["guilt", "embarrassment"],
+    "needs": ["forgiveness", "understanding", "closure"],
+    "example": "I feel terrible about what I did. I just want to make things right."
+  },
+  "anger": {
+    "function": "protect",
+    "subtypes": ["rage", "resentment"],
+    "needs": ["justice", "recognition", "respect"],
+    "example": "I can't believe they did that to me. I need them to understand what they caused."
+  },
+  "fear": {
+    "function": "protect",
+    "subtypes": ["panic", "anxiety"],
+    "needs": ["safety", "control", "reassurance"],
+    "example": "I'm scared this will happen again. I don’t feel safe anymore."
+  },
+  "sadness": {
+    "function": "validate",
+    "subtypes": ["grief", "loneliness"],
+    "needs": ["connection", "comfort", "presence"],
+    "example": "It just hurts so much. I miss them every day."
+  },
+  "joy": {
+    "function": "share",
+    "subtypes": ["happiness", "excitement"],
+    "needs": ["celebration", "acknowledgement"],
+    "example": "I’m so happy right now—I needed this!"
+  },
+  "guilt": {
+    "function": "repair",
+    "subtypes": [],
+    "needs": ["forgiveness", "acceptance"],
+    "example": "I regret saying that. I shouldn't have."
+  },
+  "hopelessness": {
+    "function": "motivate",
+    "subtypes": ["despair", "numbness"],
+    "needs": ["hope", "direction", "purpose"],
+    "example": "Nothing matters anymore. I don't know what to do next."
+  },
+  "love": {
+    "function": "connect",
+    "subtypes": ["affection", "bonding"],
+    "needs": ["closeness", "belonging"],
+    "example": "I just want to be with them. They make me feel complete."
+  },
+  "envy": {
+    "function": "acknowledge",
+    "subtypes": [],
+    "needs": ["validation", "worth"],
+    "example": "I wish I had what they do. I feel like I’m falling behind."
+  },
+  "confusion": {
+    "function": "observe",
+    "subtypes": ["doubt", "uncertainty"],
+    "needs": ["clarity", "guidance"],
+    "example": "I don’t understand what’s happening or what I’m supposed to feel."
+  },
+  "betrayal": {
+    "function": "protect",
+    "subtypes": ["violation", "broken trust"],
+    "needs": ["justice", "safety", "truth"],
+    "example": "They promised me one thing and did another. I can’t trust them anymore."
+  },
+  "numbness": {
+    "function": "motivate",
+    "subtypes": ["emptiness", "detachment"],
+    "needs": ["meaning", "aliveness"],
+    "example": "I don’t feel anything anymore. I just feel empty."
+  },
+  "disgust": {
+    "function": "protect",
+    "subtypes": ["revulsion", "repulsion"],
+    "needs": ["boundaries", "safety"],
+    "example": "That situation made me feel physically sick. It crossed a line."
+  },
+  "pride": {
+    "function": "share",
+    "subtypes": ["self-worth", "confidence"],
+    "needs": ["recognition", "respect"],
+    "example": "I worked hard for this and I’m proud of myself."
+  },
+  "jealousy": {
+    "function": "acknowledge",
+    "subtypes": [],
+    "needs": ["value", "security"],
+    "example": "Why do they get all the attention? I feel invisible."
+  },
+  "regret": {
+    "function": "repair",
+    "subtypes": [],
+    "needs": ["forgiveness", "peace"],
+    "example": "If I could go back, I’d do it differently. I hate that I messed up."
+  },
+  "loneliness": {
+    "function": "connect",
+    "subtypes": ["isolation", "abandonment"],
+    "needs": ["belonging", "companionship"],
+    "example": "I feel like I’m surrounded by people but still so alone."
+  },
+  "insecurity": {
+    "function": "validate",
+    "subtypes": [],
+    "needs": ["assurance", "acceptance"],
+    "example": "I'm not sure I'm good enough. I always doubt myself."
+  },
+  "resignation": {
+    "function": "motivate",
+    "subtypes": ["giving up", "apathy"],
+    "needs": ["hope", "reason", "purpose"],
+    "example": "What's the point anymore? Nothing I do changes anything."
+  },
+  "resentment": {
+    "function": "protect",
+    "subtypes": [],
+    "needs": ["fairness", "autonomy"],
+    "example": "I keep doing things for them, but they never notice or care."
+  },
+  "gratefulness": {
+    "function": "share",
+    "subtypes": ["appreciation", "thankfulness"],
+    "needs": ["connection", "acknowledgement"],
+    "example": "I’m truly grateful for your kindness. It meant a lot to me."
+  }
+}
