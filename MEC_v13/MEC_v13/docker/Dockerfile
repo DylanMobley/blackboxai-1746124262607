@@ -13,9 +13,11 @@ COPY ./requirements.txt /app/requirements.txt
 # Install system dependencies + Python libs
 RUN apt-get update && apt-get install -y \
     ffmpeg redis wget curl git build-essential && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip and install dependencies with pinned versions
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Now copy full source AFTER requirements to take advantage of Docker cache
 COPY ./backend /app/backend
