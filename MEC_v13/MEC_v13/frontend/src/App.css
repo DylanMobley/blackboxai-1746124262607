@@ -1,0 +1,131 @@
+/* frontend/src/App.css */
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main Chat Window */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95vh;
+  max-width: 700px;
+  margin: 2rem auto;
+  background-color: #f5efe7; /* Soft background */
+  border: 2px solid #3a332b; /* Dark outline */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(58, 51, 43, 0.2);
+}
+
+/* Chat Header */
+.chat-header {
+  padding: 1rem;
+  background: linear-gradient(90deg, #9e2a2b 0%, #3a332b 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand Logo */
+.chat-header img {
+  height: 48px;
+  width: auto;
+}
+
+/* Message Area */
+.messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.9rem;
+  border-radius: 12px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #f4e1c1; /* Skin Beige */
+  align-self: flex-end;
+  text-align: right;
+  color: #3a332b;
+}
+
+.message.bot {
+  background-color: #f0f0f0;
+  align-self: flex-start;
+  color: #3a332b;
+}
+
+/* Input Area */
+.input-area {
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid #d6cfc7;
+  background-color: #fdfbf9;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #d6cfc7;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.input-area button {
+  padding: 0.8rem 1.2rem;
+  background-color: #9e2a2b; /* Deep red */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.input-area button:hover {
+  background-color: #811d1d;
+}
+
+/* Mute Button */
+.chat-header button {
+  padding: 0.5rem 1rem;
+  background-color: #f4e1c1;
+  color: #3a332b;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-header button:hover {
+  background-color: #e4d1b5;
+}
+
+/* Scrollbar Styling */
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: transparent;
+}
