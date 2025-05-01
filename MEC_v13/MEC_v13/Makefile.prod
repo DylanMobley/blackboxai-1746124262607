@@ -1,0 +1,47 @@
+# --- CONFIG -------------------------------------
+APP_NAME=mec_api
+PORT=5101
+ENV_FILE=.env
+
+# --- CORE COMMANDS ------------------------------
+
+up:
+	docker-compose up --build -d
+
+logs:
+	docker-compose logs -f $(APP_NAME)
+
+stop:
+	docker-compose down
+
+restart: stop up
+
+shell:
+	docker exec -it $(APP_NAME) bash
+
+env:
+	@cat $(ENV_FILE)
+
+test:
+	pytest --tb=short --disable-warnings
+
+lint:
+	black . && isort . && flake8
+
+format:
+	black . && isort .
+
+env-check:
+	@echo "Using $(ENV_FILE)" && grep -v '^#' $(ENV_FILE)
+
+init:
+	python scripts/init_environment.py
+
+clean:
+	rm -rf __pycache__ */__pycache__ *.pyc .pytest_cache .mypy_cache
+
+rebuild:
+	docker-compose build --no-cache
+
+# --- ALIASES ------------------------------------
+dev: lint test
