@@ -1,0 +1,84 @@
+{
+  "id": null,
+  "uid": "mecv13-core",
+  "title": "MEC_v13+ Emotion Intelligence Dashboard",
+  "timezone": "browser",
+  "editable": true,
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "5s",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "💬 Emotion Inputs (EIL)",
+      "targets": [
+        {
+          "expr": "eil_emotion_count_total",
+          "legendFormat": "{{emotion}}",
+          "interval": ""
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "datasource": "Prometheus"
+    },
+    {
+      "type": "stat",
+      "title": "⚡ API Latency (respond)",
+      "targets": [
+        {
+          "expr": "flask_http_request_duration_seconds_mean{endpoint=\"/api/respond\"}",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 0, "w": 6, "h": 4 },
+      "datasource": "Prometheus"
+    },
+    {
+      "type": "stat",
+      "title": "📥 Clone Queue Depth",
+      "targets": [
+        {
+          "expr": "celery_task_queue_length{queue=\"clone-video\"}",
+          "legendFormat": "Clone Tasks"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 4, "w": 6, "h": 4 },
+      "datasource": "Prometheus"
+    },
+    {
+      "type": "piechart",
+      "title": "🎭 Persona Distribution",
+      "targets": [
+        {
+          "expr": "persona_usage_total",
+          "legendFormat": "{{persona}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 8, "h": 8 },
+      "datasource": "Prometheus"
+    },
+    {
+      "type": "gauge",
+      "title": "🔥 GPU Usage (%)",
+      "targets": [
+        {
+          "expr": "nvidia_smi_gpu_utilization"
+        }
+      ],
+      "gridPos": { "x": 8, "y": 8, "w": 10, "h": 8 },
+      "datasource": "Prometheus"
+    },
+    {
+      "type": "stat",
+      "title": "📦 Redis Ops/sec",
+      "targets": [
+        {
+          "expr": "redis_commands_processed_total",
+          "legendFormat": "Redis Ops"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 16, "w": 8, "h": 4 },
+      "datasource": "Prometheus"
+    }
+  ]
+}
