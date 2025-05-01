@@ -1,0 +1,66 @@
+# ─── Python ───────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+*.pyd
+*.pyo
+*.pdb
+*.pkl
+*.log
+*.sqlite3
+.env
+.env.*
+
+# ─── Virtualenv ───────────────────────────────────────
+venv/
+env/
+.venv/
+ENV/
+
+# ─── VSCode ───────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ─── OS Files ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Test & Coverage ──────────────────────────────────
+.coverage
+.cache/
+pytest_cache/
+htmlcov/
+.tox/
+
+# ─── mypy, Ruff, Pyright ──────────────────────────────
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# ─── Redis ────────────────────────────────────────────
+dump.rdb
+*.rdb
+
+# ─── Docker ───────────────────────────────────────────
+*.tar
+*.pid
+docker-compose.override.yml
+
+# ─── Logs ─────────────────────────────────────────────
+logs/
+*.log
+
+# ─── Prometheus ───────────────────────────────────────
+metrics/
+prometheus.yml
+prometheus_data/
+
+# ─── Celery & Flower ──────────────────────────────────
+celerybeat-schedule
+*.db-shm
+*.db-wal
+
+# ─── Compiled Notebooks ───────────────────────────────
+.ipynb_checkpoints/
