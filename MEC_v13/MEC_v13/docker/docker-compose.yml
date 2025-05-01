@@ -1,0 +1,120 @@
+version: "3.9"
+
+services:
+  # 🌐 Main API
+  api:
+    container_name: mec_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-5101}:${PORT:-5101}"
+    env_file:
+      - .env
+    volumes:
+      - ../pretrained:/app/pretrained
+      - ../logs:/app/logs
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT:-5101}/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # 🎭 Clone Video Service
+  clone:
+    container_name: mec_clone
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${CLONE_API_PORT:-5105}:${CLONE_API_PORT:-5105}"
+    env_file:
+      - .env
+    volumes:
+      - ../video:/app/video
+      - ../audio:/app/audio
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${CLONE_API_PORT:-5105}/status"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # 🎙️ Emotion TTS Service
+  tts:
+    container_name: mec_tts
+    build:
+      context: ./microservices/emotion-tts
+      dockerfile: Dockerfile
+    ports:
+      - "5111:5111"
+    restart: always
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5111/tts/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # 🔁 Celery Worker
+  worker:
+    container_name: mec_worker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A microservices.emotion-clone-stack.tasks worker --loglevel=info
+    env_file:
+      - .env
+    volumes:
+      - ../pretrained:/app/pretrained
+      - ../video:/app/video
+      - ../audio:/app/audio
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    depends_on:
+      - redis
+
+  # 🔴 Redis Broker
+  redis:
+    image: redis:7.0-alpine
+    container_name: mec_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # 📈 Prometheus Metrics
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: mec_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./grafana/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  # 📊 Grafana Dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: mec_grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    depends_on:
+      - prometheus
+
+volumes:
+  redis_data:
+  grafana_data:
