@@ -1,0 +1,34 @@
+{
+  "emotion": {
+    "type": "multimodal-classifier",
+    "model": "emotion-v2",
+    "format": "PyTorch",
+    "last_updated": "2025-04-24"
+  },
+  "model": {
+    "type": "fallback-nlp",
+    "model": "transformer-fusion-core",
+    "format": "ONNX",
+    "last_updated": "2025-04-24"
+  },
+  "empathy-llm": {
+    "type": "lora-tuned-llm",
+    "base_model": "mistral-7b",
+    "adapter": "hermes-empathy-v1",
+    "format": "GGUF",
+    "last_updated": "2025-04-24"
+  },
+  "personas": {
+    "type": "prompt-templates",
+    "registry": ["soothing_ally", "clinical_therapist", "compassion_bot"],
+    "format": "json",
+    "last_updated": "2025-04-24"
+  },
+  "recovery model": {
+    "type": "symbolic-recovery",
+    "trigger": "esil_deviation > 0.75",
+    "model": "recovery_v1",
+    "format": "json",
+    "last_updated": "2025-04-24"
+  }
+}
