@@ -1,0 +1,42 @@
+include .env
+
+PYTHON ?= python3
+ENV_FILE ?= .env
+ENV_TEMPLATE ?= .env.template
+
+init:
+	@echo "[INIT] Creating environment directories..."
+	$(PYTHON) scripts/init_environment.py
+
+env:
+	@echo "[ENV] Creating .env from template if missing..."
+	@test -f $(ENV_FILE) || cp $(ENV_TEMPLATE) $(ENV_FILE)
+
+dev-up: init env
+	@echo "[DEV] Launching development server..."
+	uvicorn backend.api:app --reload --host 0.0.0.0 --port $(API_PORT)
+
+dev-test:
+	pytest -v --tb=short --disable-warnings
+
+lint:
+	black . && isort .
+
+pre-commit:
+	pre-commit run --all-files
+
+prod-up:
+	@echo "[PROD] Launching production server..."
+	gunicorn backend.api:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$(API_PORT)
+
+prod-build:
+	docker build -t $(DOCKER_IMAGE) .
+
+prod-deploy:
+	docker-compose --env-file .env up -d
+
+clean:
+	find . -type d -name '__pycache__' -exec rm -r {} +
+	find . -type d -name '.pytest_cache' -exec rm -r {} +
+
+.PHONY: init env dev-up dev-test lint pre-commit prod-up prod-build prod-deploy clean
