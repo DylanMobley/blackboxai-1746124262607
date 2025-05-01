@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+httpx
+pytest
+pytest-asyncio
+sqlalchemy[asyncio]
+databases[asyncpg]
+asyncpg
+pydantic
+prometheus-client
+prometheus-flask-exporter
+transformers
+torch
+torchaudio
+opencv-python
+requests
+openai
