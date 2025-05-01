@@ -1,0 +1,24 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  # 🧠 Flask API (MEC_v13+ Core)
+  - job_name: 'mec_api'
+    static_configs:
+      - targets: ['api:5101']
+
+  # 🔁 Clone Service (optional if you expose metrics here)
+  - job_name: 'clone_service'
+    static_configs:
+      - targets: ['clone:5105']
+
+  # 🧠 Celery Worker (if metrics exposed via Flower or exporter)
+  # - job_name: 'celery_worker'
+  #   static_configs:
+  #     - targets: ['worker:5555']
+
+  # 🔴 Redis Exporter (optional)
+  # - job_name: 'redis_exporter'
+  #   static_configs:
+  #     - targets: ['redis-exporter:9121']
