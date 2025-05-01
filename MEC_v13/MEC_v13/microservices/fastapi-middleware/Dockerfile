@@ -2,7 +2,7 @@
 FROM python:3.10-slim
 
 # Set environment variables to ensure a consistent, non-interactive installation process
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory in the container
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && apt-get clean
 
-# Install dependencies from the requirements.txt
+# Upgrade pip and install dependencies with pinned versions
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
